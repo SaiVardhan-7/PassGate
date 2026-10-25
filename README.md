@@ -20,7 +20,6 @@ Requires Node 18+ and a running MongoDB.
 # 1. API
 cd server
 npm install
-npm run seed              # optional demo data
 npm run dev               # http://localhost:5000
 
 # 2. Web app (new terminal)
