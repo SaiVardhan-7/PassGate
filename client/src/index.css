@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #0b0f19;
+    color: #f1f5f9;
+  }
+
+  code, pre, .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+::-webkit-scrollbar-thumb {
+  background: #334155;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #475569;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  background: rgba(17, 24, 39, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+/* Perforated ticket divider */
+.perforated-border {
+  background-image: linear-gradient(to right, #334155 50%, rgba(255, 255, 255, 0) 0%);
+  background-position: bottom;
+  background-size: 14px 2px;
+  background-repeat: repeat-x;
+}
+
+.perforated-border-vertical {
+  background-image: linear-gradient(to bottom, #334155 50%, rgba(255, 255, 255, 0) 0%);
+  background-position: right;
+  background-size: 2px 14px;
+  background-repeat: repeat-y;
+}
+
+/* Scanner target animation */
+@keyframes scanline {
+  0% {
+    top: 5%;
+    opacity: 0.8;
+  }
+  50% {
+    top: 90%;
+    opacity: 1;
+  }
+  100% {
+    top: 5%;
+    opacity: 0.8;
+  }
+}
+
+.scanner-laser {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #6366f1, #a855f7, #6366f1, transparent);
+  box-shadow: 0 0 15px #6366f1, 0 0 30px #a855f7;
+  animation: scanline 2.5s ease-in-out infinite;
+}
+
+/* Print styling for digital passes */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .ticket-pass-print {
+    background: #ffffff !important;
+    color: #000000 !important;
+    box-shadow: none !important;
+    border: 2px solid #000000 !important;
+  }
+}
